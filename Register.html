@@ -1,0 +1,111 @@
+<html>
+	<head>
+		<title>Registration</title>
+		<!-- jQuery-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+		<!--Angular JS -->
+		<script src="angular.min.js"></script>
+		<script src="script.js"></script>
+
+		<!--Stylesheets -->
+		<link rel="stylesheet" href="design.css">
+	</head>
+	<body ng-app="Register">
+		<div class="row main" ng-controller="RegController">
+			<div class="col-md-12 col-xs-12">
+				<div class="row">
+					<div class="col-md-12 col-xs-12 text-center">
+						<h1 id="head">GoMobit</h1>
+					</div>
+					<div class="col-md-12 col-xs-12 text-center">
+						<h1>Merchant Registration Portal</h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6 col-md-offset-3">
+						<form novalidate name="form" class="Register-form">
+							<div class="form-group">
+							   <input type="text" class="form-control" ng-model="bus.name" name="bname" placeholder="business name" required="">
+							   <br />
+							    <div class="error" ng-show="form.$submitted || form.bname.$touched">
+							      <div ng-show="form.bname.$error.required">Tell us your business name.</div>
+							    </div>
+							</div>
+							<div class="form-group">
+							   <input type="text" class="form-control" ng-model="bus.address" name="baddress" placeholder="business address" required="">
+							   <br/>
+							   <div class="error" ng-show="form.$submitted || form.baddress.$touched">
+							      <div ng-show="form.baddress.$error.required">Tell us your business address.</div>
+							    </div>
+							</div>
+							<div class="form-group">
+							   <input type="text" class="form-control" ng-model="bus.city" name="bcity" placeholder="city" required="">
+							   <br/>
+							   <div class="error" ng-show="form.$submitted || form.bcity.$touched">
+							      <div ng-show="form.bcity.$error.required">Tell us your business city.</div>
+							    </div>
+							</div>
+							<div class="form-group">
+							   <input type="text" class="form-control" ng-model="bus.state" name="bstate" placeholder="state" required="">
+							   <br/>
+							   <div class="error" ng-show="form.$submitted || form.bstate.$touched">
+							      <div ng-show="form.bstate.$error.required">Tell us your business state.</div>
+							    </div>
+							</div>
+							<div class="form-group">
+							   <input type="text" class="form-control" ng-model="bus.zipcode" name="bzip" placeholder="zipcode" required="">
+							   <br/>
+							   <div class="error" ng-show="form.$submitted || form.bzip.$touched">
+							      <div ng-show="form.bzip.$error.required">Tell us your business zipcode.</div>
+							    </div>
+							</div>
+							<div class="form-group">
+							   <input type="text" class="form-control" ng-model="bus.phone" name="bphone" placeholder="business phone" required="">
+							   <br/>
+							   <div class="error" ng-show="form.$submitted || form.bphone.$touched">
+							      <div ng-show="form.bphone.$error.required">Tell us your business phone number.</div>
+							    </div>
+							</div>
+							<div class="form-group">
+							   <input type="email" class="form-control" ng-model="bus.email" name="bemail" placeholder="business email" required="">
+							   <br />
+							    <div class="error" ng-show="form.$submitted || form.bemail.$touched">
+							      <span ng-show="form.bemail.$error.required">Tell us your business email.</span>
+							      <span ng-show="form.bemail.$error.email">This is not a valid email.</span>
+							    </div>
+							</div>
+							<div class="form-group">
+							   <input type="password" class="form-control" ng-model="bus.password" name="bpwd" password-strength="bus.password" placeholder="password" required="">
+							   <span class="help-inline" data-ng-show='form.bpwd.$valid && form.bpwd.$dirty' data-ng-class="strength">This password is {{strength}} ! </span>
+							   <br/>
+							   <div class="error" ng-show="form.$submitted || form.bpwd.$touched">
+							      <div ng-show="form.bpwd.$error.required">Enter a password for your account.</div>
+							    </div>
+							   
+							</div>
+							<div class="form-group">
+							   <input type="text" class="form-control" ng-model="bus.source" name="bsource" placeholder="how did you come to know about us?" required="">
+							   <br/>
+							   <div ng-show="form.$submitted || form.bsource.$touched">
+							      <div ng-show="form.bsource.$error.required">Tell us your business phone number.</div>
+							    </div>
+							</div>
+							<input class="btn btn-primary btn-lg" type="button" ng-click="reset(form)" value="Reset" />
+							<input class="btn btn-primary btn-lg" type="submit" ng-disabled="form.$invalid" ng-click="update(bus)" value="Register" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
