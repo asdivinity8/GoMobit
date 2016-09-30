@@ -1,5 +1,5 @@
 angular.module('Register', [])
-.controller('RegController', ['$scope', function($scope) {
+.controller('RegController', ['$scope','dataFactory', function($scope) {
   $scope.business = {};
 
   $scope.update = function(bus) {
@@ -16,6 +16,15 @@ angular.module('Register', [])
   };
 
   $scope.reset();
+  $scope.insertCustomer = function(bus){
+    dataFactory.insertCustomer(bus)
+    .then(function(response){
+      $scope.status ='Registration successful ! Please Login.';
+    }, function(error){
+      $scope.status = 'Registration failed. Try again.' + error.message;
+    });
+  };
+
 }])
 .directive("passwordStrength", function(){
   return{
@@ -35,4 +44,13 @@ angular.module('Register', [])
       });
     }
   };
-});
+})
+.factory('dataFactory', ['$http' , function($http){
+
+  var urlBase ='/api/customers';
+  var dataFactory = {};
+
+  dataFactory.insertCustomer=function(cust){
+    return $http.post(urlBase, cust);
+  }
+}]);
